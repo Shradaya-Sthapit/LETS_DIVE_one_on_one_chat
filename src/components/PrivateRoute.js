@@ -7,7 +7,7 @@ function PrivateRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        // console.log(props)
+        
         localStorage.getItem('props') ? (
           <Component {...props} />
         ) : (

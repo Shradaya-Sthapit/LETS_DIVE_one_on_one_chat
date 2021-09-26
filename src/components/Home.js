@@ -4,8 +4,6 @@ import { useEffect } from 'react';
 import { db } from '../firebaseAPI';
 import { useStateValue } from './StateProvider';
 import '../styles/homeStyle.css';
-import { Navbar } from 'react-bootstrap';
-
 const User=(props) =>{
     const {user,onClick}=props;
     return(
@@ -50,7 +48,6 @@ const userLocal= JSON.parse(localStorage.getItem('props'))
 },[])
 useEffect(()=> {
     db.collection("users")
-    // .where("isOnline", "==", true)
     .onSnapshot((querySnapshot) => {
     const users = [];
     querySnapshot.forEach((doc) => {
@@ -91,7 +88,7 @@ const setView=(user)=>{
     }) 
 
 };
-console.log(state.conversations)
+
 const submitMessage=(e)=>{
     const msgObj={
         user_uid_1: userLocal?.user.uid,
@@ -101,8 +98,7 @@ const submitMessage=(e)=>{
     if(message!==""){
         updateMessage(msgObj);
         setMessage('')
-    }
-    console.log(msgObj);
+    } 
 }
 
 const updateMessage=(msgObj)=>{
